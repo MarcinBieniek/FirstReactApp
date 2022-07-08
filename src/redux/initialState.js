@@ -17,10 +17,6 @@ const initialState = {
       }
     ],
   
-<<<<<<< HEAD
-=======
-    
->>>>>>> c7baab8603683e39e5ce5495695568a4701b8c95
     cards: [
       { id: 1, columnId: 1, title: 'This is Going to Hurt' },
       { id: 2, columnId: 1, title: 'Interpreter of Maladies' },
@@ -30,10 +26,6 @@ const initialState = {
       { id: 6, columnId: 3, title: 'Skyrim' }
     ]
   
+    
   };
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> c7baab8603683e39e5ce5495695568a4701b8c95
   export default initialState;

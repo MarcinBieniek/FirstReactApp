@@ -3,9 +3,14 @@ import Column from '../Column/Column';
 import { useState } from 'react';
 import shortid from 'shortid';
 import ColumnForm from '../ColumnForm/ColumnForm';
+import { useSelector } from 'react-redux';
 
 const List = () => {
     
+    const columns2 = useSelector(state => state.columns);
+    
+    console.log('columns2', columns2)
+
     const [columns, setColumns] = useState([
         {
             id: 1,

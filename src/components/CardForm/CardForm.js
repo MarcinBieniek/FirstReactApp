@@ -9,7 +9,6 @@ const CardForm = props => {
     const dispatch = useDispatch();
 
     const [title, setTitle] = useState('');
-
     const columnId = props.columnId;
 
     const handleCardFormSubmit = e => {

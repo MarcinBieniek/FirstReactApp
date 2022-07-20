@@ -1,4 +1,5 @@
 import styles from './NavBar.module.scss';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -11,13 +12,13 @@ const NavBar = () => {
                 </div>
                 <ul className={styles.navbar__list}>
                     <li>
-                        <a href="/">Home</a>    
+                        <Link to="/">Home</Link>    
                     </li>
                     <li>
-                        <a href="/favourite">Favourite</a>    
+                        <Link to="/favourite">Favourite</Link>    
                     </li>
                     <li>
-                        <a href="/about">About</a>    
+                        <Link to="/about">About</Link>    
                     </li>
                 </ul>
             </div>

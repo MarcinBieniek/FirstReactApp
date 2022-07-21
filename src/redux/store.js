@@ -13,6 +13,7 @@ export const getColumnsByList = ({ columns }, listId) => columns.filter(column =
 export const searchInputValue = state => state.searchInput;
 
 // action creators
+export const addList = payload => ({ type: 'ADD_LIST', payload });
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 export const addCard = payload => ({ type: 'ADD_CARD', payload });
 export const updateSearchString = payload => ({type: 'UPDATE_SEARCHSTRING', payload});
@@ -28,6 +29,9 @@ const reducer = (state, action) => {
     
     case 'UPDATE_SEARCHSTRING':
       return {...state, searchInput: action.payload} 
+
+    case 'ADD_LIST':
+      return {...state, lists: [...state.lists, { ...action.payload, id: shortid()}]}
 
     default:
       return state;

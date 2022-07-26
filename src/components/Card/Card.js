@@ -15,6 +15,7 @@ const Card = props => {
         setIsFavorite(!isFavorite);
         dispatch(toggleCardFavorite(cardId));
 
+
         console.log('favtest', props.isFavorite)
     }
 

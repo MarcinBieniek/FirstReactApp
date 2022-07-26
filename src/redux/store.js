@@ -1,11 +1,14 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import initialState from './initialState';
-import shortid from "shortid";
 import strContains from '../utils/strContains';
+import listsReducer from './listsRedux';
+import columnsReducer from './columnsRedux';
+import cardsReducer from './cardsRedux';
+import searchStringReducer from './searchStringRedux'
 
 //selectors
-export const getFilteredCards = ({cards, searchInput}, columnId) => cards
-  .filter(card => card.columnId === columnId && strContains(card.title, searchInput));
+export const getFilteredCards = ({cards, searchString}, columnId) => cards
+  .filter(card => card.columnId === columnId && strContains(card.title, searchString));
 export const getFavoriteCards = ({cards}) => cards.filter(card => card.isFavorite === true);
 export const getAllColumns = state => state.columns;
 export const getAllLists = state => state.lists;
@@ -20,29 +23,18 @@ export const addCard = payload => ({ type: 'ADD_CARD', payload });
 export const updateSearchString = payload => ({type: 'UPDATE_SEARCHSTRING', payload});
 export const toggleCardFavorite = payload => ({type: 'TOGGLE_CARD_FAVORITE', payload});
 
-const reducer = (state, action) => {
+// subreducers
 
-  switch(action.type) {
-    case 'ADD_COLUMN':
-      return {...state, columns: [...state.columns, { ...action.payload, id: shortid()}]}
 
-    case 'ADD_CARD':
-      return { ...state, cards: [...state.cards, { ...action.payload, id: shortid()}]}
-    
-    case 'UPDATE_SEARCHSTRING':
-      return {...state, searchInput: action.payload} 
 
-    case 'ADD_LIST':
-      return {...state, lists: [...state.lists, { ...action.payload, id: shortid()}]}
+const subreducers = {
+  lists: listsReducer,
+  columns: columnsReducer,
+  cards: cardsReducer,
+  searchString: searchStringReducer,
+}
 
-    case 'TOGGLE_CARD_FAVORITE':
-      return { ...state, cards: state.cards.map(card => (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card) };
-
-    default:
-      return state;
-  }
-
-};
+const reducer = combineReducers(subreducers);
 
 const store = createStore(
   reducer,

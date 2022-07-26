@@ -12,7 +12,7 @@
     font-weight: bold;
 }
 
-.button__favorite{
+.button{
     color: $color-dark;
     background: inherit;
     border: none; 
@@ -21,3 +21,13 @@
 .isFavorite {
     color: $color-favIcon;
 }
+
+.button__delete {
+    color: $color-grey;
+    background: inherit;
+    border: none; 
+    &:hover {
+        color: $color-dark;
+    }
+}
+
